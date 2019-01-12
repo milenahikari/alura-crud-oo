@@ -9,5 +9,21 @@
         $resultado = mysqli_query($conexao, $query);
         $usuario = mysqli_fetch_assoc($resultado);
         return $usuario;
+    }
 
+    function escapandoString($conexao, $item){
+        return mysqli_real_escape_string($conexao, $item);
+    }
+
+    function insertUsuario($conexao, Usuario $usuario){
+        $email = escapandoString($conexao, $usuario->email);
+        $senha = md5($usuario->senha);
+        $nome = escapandoString($conexao, $usuario->nome);
+
+        if(!empty($email) && !empty($senha) && !empty($nome)){
+            $query = "insert into usuarios (email, senha, nome) values ('{$email}', '{$senha}', '{$nome}')";
+            return mysqli_query($conexao, $query);  
+        } else{
+            return false;
+        }        
     }

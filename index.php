@@ -21,6 +21,7 @@
                 </tr>
             </table>
             <button type="submit" class="btn btn-primary botao">Login</button>
+            <a href="usuario-formulario.php" class="btn btn-secondary botao">Cadastrar</a>
         </form>
     <?php }?>
 <?php include("rodape.php");?>   

@@ -3,24 +3,30 @@
     /*Executa somente uma vez, se já tiver sido executaod não executa novamente*/
     require_once("banco-produto.php");
     require_once("logica-usuario.php");
+    require_once("class/Produto.php");
 
     verificaUsuario();
-    $nome = $_POST['nome'];
-    $preco = $_POST['preco'];
-    $descricao = $_POST['descricao'];
-    $categoria_id = $_POST['categoria_id'];
+
+    $produto = new Produto();
+
+    $produto->nome = $_POST['nome'];
+    $produto->preco = $_POST['preco'];
+    $produto->descricao = $_POST['descricao'];
+
     if(array_key_exists('usado', $_POST)){
-        $usado = "true";
+        $produto->usado = "true";
     } else{
-        $usado = "false";
+        $produto->usado = "false";
     }
-        
-    if(insertProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usado)) { ?>
-        <p class="text-success">Produto <?= $nome ?> R$ <?= $preco?> adicionado com sucesso!</p>
+
+    $produto->categoria_id = $_POST['categoria_id'];   
+
+    if(insertProduto($conexao, $produto)) { ?>
+        <p class="text-success">Produto <?= $produto->nome ?> R$ <?= $produto->preco?> adicionado com sucesso!</p>
     <?php } else { 
          $msg = mysqli_error($conexao);    
     ?>
-        <p class="text-danger">O produto <?= $nome?> não foi adicionado. Preencha todos os campos! <?=$msg?></p>
+        <p class="text-danger">O produto <?= $produto->nome?> não foi adicionado. Preencha todos os campos! <?=$msg?></p>
     <?php
     }
 

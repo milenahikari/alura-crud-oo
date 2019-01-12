@@ -17,23 +17,24 @@
         return mysqli_real_escape_string($conexao, $item);
     }
 
-    function insertProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usado) {
-        $nome = escapandoString($conexao, $nome);
-        $preco = escapandoString($conexao, $preco);
-        $descricao = escapandoString($conexao, $descricao);
-        $categoria_id = escapandoString($conexao, $categoria_id);
+    function insertProduto($conexao, Produto $produto) {
+        $nome = escapandoString($conexao, $produto->nome);
+        $preco = escapandoString($conexao, $produto->preco);
+        $descricao = escapandoString($conexao, $produto->descricao);
+        $categoria = escapandoString($conexao, $produto->categoria_id);
+        $usado = $produto->usado;
 
-        if(!empty($nome) && !empty($preco) && !empty($categoria_id)){
-            $query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$nome}', {$preco}, '{$descricao}', '{$categoria_id}', {$usado})";
+        if(!empty($nome) && !empty($preco) && !empty($categoria)){
+            $query = "insert into produtos (nome, preco, descricao, categoria_id, usado) values ('{$nome}', {$preco}, '{$descricao}', '{$categoria}', {$usado})";
             return mysqli_query($conexao, $query);
         } else {
             return false;
         }
     }
 
-    function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usado){
-        $query = "update produtos set nome = '{$nome}', preco = {$preco}, descricao = '{$descricao}', categoria_id = {$categoria_id}, 
-        usado = {$usado} where id = '{$id}'";
+    function alteraProduto($conexao, $produto){
+        $query = "update produtos set nome = '{$produto->nome}', preco = {$produto->preco}, descricao = '{$produto->descricao}', categoria_id = {$produto->categoria_id}, 
+        usado = {$produto->usado} where id = '{$produto->id}'";
         return mysqli_query($conexao, $query);
     }
 
