@@ -5,14 +5,14 @@
 
     $usuario = new Usuario();
 
-    $usuario->email = $_POST['email'];
-    $usuario->senha = $_POST['senha'];
-    $usuario->nome = $_POST['nome'];
+    $usuario->setEmail($_POST['email']);
+    $usuario->setSenha($_POST['senha']);
+    $usuario->setNome($_POST['nome']);
 
     if(insertUsuario($conexao, $usuario)){ ?>
-        <p class="text-success">Usuário <?=$usuario->nome?> foi adicionado!</p>
+        <p class="text-success">Usuário <?=$usuario->getNome()?> foi adicionado!</p>
     <?php } else{?> 
-        <p class="text-danger">Usuário <?=$usuario->nome?> não foi adicionado. Preencha todos os campos!</p>
+        <p class="text-danger">Usuário <?=$usuario->gettNome()?> não foi adicionado. Preencha todos os campos!</p>
     <?php
     }
 ?>

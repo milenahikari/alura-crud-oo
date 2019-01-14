@@ -16,9 +16,9 @@
     }
 
     function insertUsuario($conexao, Usuario $usuario){
-        $email = escapandoString($conexao, $usuario->email);
-        $senha = md5($usuario->senha);
-        $nome = escapandoString($conexao, $usuario->nome);
+        $email = escapandoString($conexao, $usuario->getEmail());
+        $senha = md5($usuario->getSenha());
+        $nome = escapandoString($conexao, $usuario->getNome());
 
         if(!empty($email) && !empty($senha) && !empty($nome)){
             $query = "insert into usuarios (email, senha, nome) values ('{$email}', '{$senha}', '{$nome}')";
