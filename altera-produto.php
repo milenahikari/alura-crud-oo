@@ -4,22 +4,21 @@
     require_once("class/Produto.php");
     require_once("class/Categoria.php");
 
-    $produto = new Produto();
-    $produto->setId($_POST['id']);
-    $produto->setNome($_POST['nome']);
-    $produto->setPreco($_POST['preco']);
-    $produto->setDescricao($_POST['descricao']);
-
     $categoria = new Categoria();
     $categoria->setId($_POST['categoria_id']);
+
+    $nome = $_POST['nome'];
+    $preco = $_POST['preco'];
+    $descricao = $_POST['descricao'];
     
     if(array_key_exists('usado', $_POST)){
-        $produto->setUsado("true");
+        $usado = "true";
     } else{
-        $produto->setUsado("false");
+        $usado = "false";
     }
 
-    $produto->setCategoria($categoria);
+    $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+    $produto->setId($_POST['id']);
         
     if(alteraProduto($conexao, $produto)) { ?>
         <p class="text-success">O Produto <?= $produto->getNome() ?> R$ <?= $produto->getPreco()?> foi alterado!</p>

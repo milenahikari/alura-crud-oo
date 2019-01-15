@@ -8,21 +8,20 @@
 
     verificaUsuario();
 
-    $produto = new Produto();
-    $produto->setNome($_POST['nome']);
-    $produto->setPreco($_POST['preco']);
-    $produto->setDescricao($_POST['descricao']);
-
     $categoria = new Categoria();
     $categoria->setId($_POST['categoria_id']);
 
+    $nome = $_POST['nome'];
+    $preco = $_POST['preco'];
+    $descricao = $_POST['descricao'];
+
     if(array_key_exists('usado', $_POST)){
-        $produto->setUsado("true");
+        $usado = "true";
     } else{
-        $produto->setUsado("false");
+        $usado = "false";
     }
 
-    $produto->setCategoria($categoria); 
+    $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);  
 
     if(insertProduto($conexao, $produto)) { ?>
         <p class="text-success">Produto <?= $produto->getNome() ?> R$ <?= $produto->getPreco()?> adicionado com sucesso!</p>
