@@ -1,4 +1,11 @@
-<?php 
+<?php
+    function carregaClasse($nomeDaClasse) {
+        require_once("class/" . $nomeDaClasse . ".php");
+    }
+
+    //Registra função como autoloading
+    spl_autoload_register("carregaClasse");
+
     /*Todos os arquivos que incluem cabeçalho vai mostrar todos os tipos de erros, exceto os notices. */
     /*Controlar Nível de erro*/
     error_reporting(E_ALL ^ E_NOTICE);
@@ -49,5 +56,6 @@
                 mostraAlerta("success");
                 mostraAlerta("danger");
             ?>
+
 
        

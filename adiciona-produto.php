@@ -3,8 +3,6 @@
     /*Executa somente uma vez, se já tiver sido executaod não executa novamente*/
     require_once("banco-produto.php");
     require_once("logica-usuario.php");
-    require_once("class/Produto.php");
-    require_once("class/Categoria.php");
 
     verificaUsuario();
 
