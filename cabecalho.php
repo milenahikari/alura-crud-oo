@@ -10,6 +10,7 @@
     /*Controlar Nível de erro*/
     error_reporting(E_ALL ^ E_NOTICE);
     require_once("mostra-alerta.php");
+    require_once("conecta.php");
 ?>
 <html>
     <head>

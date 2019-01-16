@@ -1,7 +1,6 @@
 <?php 
     require_once("cabecalho.php");
     /*Executa somente uma vez, se já tiver sido executaod não executa novamente*/
-    require_once("banco-produto.php");
     require_once("logica-usuario.php");
 
     verificaUsuario();
@@ -21,7 +20,9 @@
 
     $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);  
 
-    if(insertProduto($conexao, $produto)) { ?>
+    $produtoDao = new ProdutoDao($conexao);
+
+    if($produtoDao->insertProduto($produto)) { ?>
         <p class="text-success">Produto <?= $produto->getNome() ?> R$ <?= $produto->getPreco()?> adicionado com sucesso!</p>
     <?php } else { 
          $msg = mysqli_error($conexao);    
