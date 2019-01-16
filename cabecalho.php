@@ -1,6 +1,6 @@
 <?php
     function carregaClasse($nomeDaClasse) {
-        require_once("class/" . $nomeDaClasse . ".php");
+        require("class/".$nomeDaClasse.".php");
     }
 
     //Registra função como autoloading
