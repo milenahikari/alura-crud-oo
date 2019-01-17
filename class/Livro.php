@@ -11,4 +11,8 @@
             return $this->isbn = $isbn;
         }
 
+        //Reescrita de metodo da classe pai
+        public function calculaImposto() {
+           return $this->getPreco() * 0.065; 
+        }
     }

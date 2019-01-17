@@ -71,4 +71,8 @@
             //Se for uma instancia de livro retorna true
             return $this instanceof Livro;
         }
+
+        public function calculaImposto() {
+            return $this->preco * 0.195;         
+        }
     }

@@ -11,6 +11,9 @@
         <tr>
             <td><?=$produto->getNome()?></td>
             <td><?=$produto->getPreco()?></td>
+            //Polimorfismo: capacidade de um objeto ser referenciado de várias formas
+            //O PHP chama o primeiro o método da classe mais especifica, se não encontrar, procura na classe pai
+            <td><?=$produto->calculaImposto()?></td>
             <td><?=$produto->precoComDesconto()?></td>
             <td><?=substr($produto->getDescricao(), 0, 40) ?></td>
             <td><?=$produto->getCategoria()->getNome()?></td>
