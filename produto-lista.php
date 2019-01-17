@@ -14,7 +14,13 @@
             <td><?=$produto->precoComDesconto()?></td>
             <td><?=substr($produto->getDescricao(), 0, 40) ?></td>
             <td><?=$produto->getCategoria()->getNome()?></td>
-            <td>ISBN: <?=$produto->getIsbn()?></td>
+            <td>
+                <?php 
+                    if($produto->temIsbn()){
+                        echo "ISBN: " . $produto->getIsbn();
+                    }
+                ?>
+            </td>
             <td><a class="btn btn-primary botao" href="produto-altera-formulario.php?id=<?=$produto->getId()?>">alterar</a></td>
             <td>
                 <form action="remove-produto.php" method="post">

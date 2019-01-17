@@ -6,8 +6,6 @@
         private $descricao;
         private $categoria;
         private $usado;
-        private $isbn;
-        private $tipoProduto;
 
         function __construct($nome, $preco, $descricao, Categoria $categoria, $usado) {
            $this->nome = $nome;
@@ -60,22 +58,6 @@
             return $this->usado = $usado;
         }
 
-        public function getIsbn() {
-            return $this->isbn;
-        }
-
-        public function setIsbn($isbn) {
-            return $this->isbn = $isbn;
-        }
-
-        public function getTipoProduto() {
-            return $this->tipoProduto;
-        }
-
-        public function setTipoProduto($tipoProduto) {
-            return $this->tipoProduto = $tipoProduto;
-        }
-
         //Metodo: comportamento da classe
         //Parametro: se não receber um parametro, a função faz o calculo com o valor padrão
         public function precoComDesconto($valor = 0.1) {
@@ -84,5 +66,9 @@
             }
             return $this->preco;
         }
+
+        public function temIsbn() {
+            //Se for uma instancia de livro retorna true
+            return $this instanceof Livro;
+        }
     }
-?>

@@ -36,7 +36,7 @@
             <?php 
                 $tipos = array("Produto", "Livro");
                 foreach($tipos as $tipo) : 
-                $essaEhOTipo = $produto->getTipoProduto() == $tipo;
+                $essaEhOTipo = get_class($produto) == $tipo;
                 $selecao = $essaEhOTipo ? "selected='selected'" : "";
             ?>
             <option value="<?=$tipo?>" <?=$selecao?>>
@@ -49,6 +49,6 @@
 <tr>
     <td>ISBN (caso seja um Livro)</td>
     <td>
-        <input type="text" name="isbn" class="form-control" value="<?=$produto->getIsbn()?>">
+        <input type="text" name="isbn" class="form-control" value="<?php if($produto->temIsbn()) { echo $produto->getIsbn();} ?>">
     </td>
 </tr>

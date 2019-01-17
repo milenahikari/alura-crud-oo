@@ -19,4 +19,3 @@
             return $this->nome = $nome;
         }
     }
-?>
