@@ -1,6 +1,7 @@
 <?php
     //Classe livro herda atributos de produto
-    class Livro extends Produto{
+    //Classe livro é uma abstração de um livro, ou seja, contém as regras de negócio de um livro mas não podemos instancia-lo
+    abstract class Livro extends Produto{
         private $isbn;
 
         public function getIsbn() {
