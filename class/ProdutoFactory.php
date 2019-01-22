@@ -2,7 +2,7 @@
     /* Classe de criação : PRODUTO FACTORY
     - Classe que encapsula a criação de produtos: Dado um tipo de produto a classe cria esse produto desde que o tipo seja válido */
     class ProdutoFactory {
-        private $classes = array("Produto", "LivroFisico", "Ebook");
+        private $classes = array("LivroFisico", "Ebook");
 
         public function criaPor($tipoProduto, $params) {
 
@@ -20,7 +20,7 @@
             }
 
             //se nao encontramos nada, vamos criar um produto: 
-            return new Produto($nome, $preco, $descricao, $categoria, $usado);
+            return new LivroFisico($nome, $preco, $descricao, $categoria, $usado);
         }
     
     }

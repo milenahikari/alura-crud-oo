@@ -11,4 +11,9 @@
         public function setTaxaImpressao($taxaImpressao) {
             return $this->taxaImpressao = $taxaImpressao;
         }
+
+        public function atualizaBaseadoEm($params) { 
+            $this->setIsbn($params['isbn']);
+            $this->setTaxaImpressao($params['taxaImpressao']);
+        }
     }
